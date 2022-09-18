@@ -28,10 +28,6 @@ public:
                 if(n%i == 0)
                 {
                     //is factor
-                    if(parent[i] == -1)
-                    {
-                        parent[i] = i;
-                    }
                     _union(i,n,parent);
                     _union(i,n/i,parent);
                 }
