@@ -11,14 +11,14 @@ public:
             while(l < r){
                 if(nums[l] + nums[r] == temp){
                     ans.insert({nums[i],nums[l],nums[r]});
-                    int x = nums[l];
-                    while(l < r && nums[l] == x)
-                        l++;
-                    x = nums[r];
-                    while(l < r && nums[r] == x)
-                        r--;
+                    //int x = nums[l];
+                    // while(l < r && nums[l] == x)
+                    //     l++;
+                    // x = nums[r];
+                    // while(l < r && nums[r] == x)
+                    //     r--;
                 }
-                else if(nums[l] + nums[r] > temp)
+                if(nums[l] + nums[r] >= temp)
                     r--;
                 else
                     l++;
