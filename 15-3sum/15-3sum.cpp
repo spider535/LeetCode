@@ -11,20 +11,18 @@ public:
             while(l < r){
                 if(nums[l] + nums[r] == temp){
                     ans.insert({nums[i],nums[l],nums[r]});
-                    //int x = nums[l];
-                    // while(l < r && nums[l] == x)
-                    //     l++;
-                    // x = nums[r];
-                    // while(l < r && nums[r] == x)
-                    //     r--;
+                    int x = nums[l];
+                    while(l < r && nums[l] == x)
+                        l++;
+                    x = nums[r];
+                    while(l < r && nums[r] == x)
+                        r--;
                 }
-                if(nums[l] + nums[r] >= temp)
+                else if(nums[l] + nums[r] > temp)
                     r--;
                 else
                     l++;
             }
-            while(i < n-1 && nums[i] == nums[i+1])
-                i++;
         }
         vector<vector<int>> ans_(ans.begin(),ans.end());
         return ans_;
