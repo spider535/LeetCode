@@ -8,17 +8,17 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-#define pil pair<int,ListNode*>
+#define pil ListNode*
 struct myCmp {
-    bool operator()(pil const &p, pil const &q){
-        return p.first > q.first;
+    bool operator()(ListNode* const &p, ListNode* const &q){
+        return p->val > q->val;
     }
 };
 
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        priority_queue<pil,vector<pil>,myCmp> first;
+        priority_queue<ListNode*,vector<ListNode*>,myCmp> first;
         int n = lists.size();
         if(n==0)
             return nullptr;
@@ -26,28 +26,28 @@ public:
         for(int i = 0; i < n; i++){
             if(lists[i])
             {
-                first.push({lists[i]->val,lists[i]});
+                first.push(lists[i]);
             }
         }
         if(first.empty())
             return nullptr;
-        pil temp = first.top();
+        ListNode* temp = first.top();
         first.pop();
-        ListNode *head = new ListNode(temp.first);
+        ListNode *head = new ListNode(temp->val);
         ListNode* cur = head;
-        if(temp.second->next)
+        if(temp->next)
         {
-            first.push({temp.second->next->val,temp.second->next});
+            first.push(temp->next);
         }
         while(!first.empty())
         {
             pil temp = first.top();
             first.pop();
-            cur->next = new ListNode(temp.first);
+            cur->next = new ListNode(temp->val);
             cur = cur->next;
-            if(temp.second->next)
+            if(temp->next)
             {
-                first.push({temp.second->next->val,temp.second->next});
+                first.push(temp->next);
             }
         }
         return head;
