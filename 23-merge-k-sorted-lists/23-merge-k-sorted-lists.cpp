@@ -20,20 +20,17 @@ public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         priority_queue<ListNode*,vector<ListNode*>,myCmp> first;
         int n = lists.size();
-        if(n==0)
-            return nullptr;
-        
-        for(int i = 0; i < n; i++){
-            if(lists[i])
+        for(auto &it : lists){
+            if(it)
             {
-                first.push(lists[i]);
+                first.push(it);
             }
         }
         if(first.empty())
             return nullptr;
         ListNode* temp = first.top();
         first.pop();
-        ListNode *head = new ListNode(temp->val);
+        ListNode *head = temp;
         ListNode* cur = head;
         if(temp->next)
         {
@@ -43,7 +40,7 @@ public:
         {
             pil temp = first.top();
             first.pop();
-            cur->next = new ListNode(temp->val);
+            cur->next = temp;
             cur = cur->next;
             if(temp->next)
             {
