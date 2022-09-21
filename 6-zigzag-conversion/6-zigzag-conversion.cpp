@@ -4,12 +4,11 @@ public:
         if(n == 1)
             return s;
         int m = s.length();
-        vector<vector<char>> temp(n,vector<char>(m,'$'));
-        int i = 0 , j = 0;
+        vector<string> temp(n);
+        int i = 0 ;
         bool f = true;
         for(auto &it : s){
-            // cout<<i<<" "<<j<<endl;
-            temp[i][j] = it;
+            temp[i].push_back(it);
             if(f){
                 i++;
             }
@@ -18,7 +17,6 @@ public:
             }
             else if(!f){
                 i--;
-                j++;
             }
             if(i == 0){
                 f = true;
@@ -27,7 +25,6 @@ public:
         string ans;
         for(auto &it : temp){
             for(auto &ir : it){
-                if(ir != '$')
                     ans.push_back(ir);
             }
         }
