@@ -22,11 +22,9 @@ public:
                 f = true;
             }
         }
-        string ans;
+        string ans = "";
         for(auto &it : temp){
-            for(auto &ir : it){
-                    ans.push_back(ir);
-            }
+            ans += it;
         }
         return ans;
     }
