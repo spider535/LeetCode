@@ -12,16 +12,16 @@
 class Solution {
 public:
     int x = 0;
-    void helper(TreeNode* root,int y){
+    void helper(TreeNode* root){
         if(!root)
             return ;
-        helper(root->right,y);
+        helper(root->right);
         root->val += x;
         x = root->val;
-        helper(root->left,root->val);
+        helper(root->left);
     }
     TreeNode* convertBST(TreeNode* root) {
-        helper(root,0);
+        helper(root);
         return root;
     }
 };
