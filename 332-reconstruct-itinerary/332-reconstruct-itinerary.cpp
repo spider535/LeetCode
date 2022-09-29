@@ -1,23 +1,22 @@
- class Solution {
-        unordered_map<string, priority_queue<string, vector<string>, greater<string>>> graph;
-        vector<string> result;
-        void dfs(string vtex)
-        {
-            auto & edges = graph[vtex];
-            while (!edges.empty())
-            {
-                string to_vtex = edges.top();
-                edges.pop();
-                dfs(to_vtex);
-            }
-            result.push_back(vtex);
+class Solution {
+public:
+    vector<string> ans;
+    void helper(unordered_map<string,multiset<string>> &adj,string ss){
+        while(!adj[ss].empty()){
+            string temp = *(adj[ss].begin());
+            adj[ss].erase(adj[ss].begin());
+            helper(adj,temp);
         }
-    public:
-        vector<string> findItinerary(vector<vector<string>>& tickets) {
-            for (auto e : tickets)
-                graph[e[0]].push(e[1]);
-            dfs("JFK");
-            reverse(result.begin(), result.end());
-            return result;
+        ans.push_back(ss);
+    }
+    vector<string> findItinerary(vector<vector<string>>& tickets) {
+        int n = tickets.size();
+        unordered_map<string,multiset<string>> adj;
+        for(auto &it : tickets){
+            adj[it[0]].insert(it[1]);
         }
-    };
+        helper(adj,"JFK");
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
