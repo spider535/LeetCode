@@ -27,10 +27,7 @@ public:
         }
         disc.resize(n,-1);
         low.resize(n,-1);
-        for(int i = 0 ; i < n ; i++){
-            if(disc[i] == -1)
-                dfs(adj,i,-1);
-        }
+        dfs(adj,0,-1);
         return ans;
     }
 };
