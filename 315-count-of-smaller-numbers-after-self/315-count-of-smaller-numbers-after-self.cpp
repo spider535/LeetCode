@@ -20,7 +20,7 @@ public:
         for(auto &it : nums){
             it += 10000+1;
         }
-        bit.resize(1e5,0);
+        bit.resize(8*1e4,0);
         vector<int> ans;
         int n = nums.size();
         for(int i = n-1 ; i>= 0 ;i--){
