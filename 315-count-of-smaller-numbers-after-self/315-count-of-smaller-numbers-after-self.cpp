@@ -9,9 +9,9 @@ public:
         }
         return ans;
     }
-    void update(int i,int val){
+    void update(int i){
         while(i < 1e5){
-            bit[i] += val;
+            bit[i]++;
             i += (i&-i);
         }
         
@@ -26,7 +26,7 @@ public:
         for(int i = n-1 ; i>= 0 ;i--){
             int it = nums[i];
             ans.push_back(sum(it-1));
-            update(it,1);
+            update(it);
         }
         reverse(ans.begin(),ans.end());
         return ans;
