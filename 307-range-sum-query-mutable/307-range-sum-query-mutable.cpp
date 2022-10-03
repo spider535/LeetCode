@@ -2,6 +2,7 @@ class NumArray {
 public:
     vector<int>a;
     vector<int> bit;
+    int N;
     int sum(int i){
         int ans = 0;
         while(i > 0){
@@ -11,7 +12,7 @@ public:
         return ans;
     }
     void update_(int i,int val){
-        while(i < 1e5){
+        while(i < N){
             bit[i] += val;
             i += (i&-i);
         }
@@ -20,7 +21,8 @@ public:
     NumArray(vector<int>& nums) {
         a = nums;
         int n = nums.size();
-        bit.resize(1e5,0);
+        bit.resize(n+1,0);
+        N= n+1;
         for(int i = 0; i < n ;i++){
             update_(i+1,nums[i]);
         }
