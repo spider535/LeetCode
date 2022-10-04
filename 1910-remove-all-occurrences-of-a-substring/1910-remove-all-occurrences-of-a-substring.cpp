@@ -36,12 +36,11 @@ public:
             vector<int> z = zalgo(temp);
             string x;
             int n = temp.size();
-            bool f = true;
             for(int i = m+1 ; i < n ; i++){
-                if(f && z[i] == m){
-                    i += m-1;
+                if(z[i] == m){
                     flag = true;
-                    f = false;
+                    x += temp.substr(i+m);
+                    break;
                 }
                 else
                     x.push_back(temp[i]);
