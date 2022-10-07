@@ -10,7 +10,7 @@ public:
         if(dp[i] != -1)
             return dp[i];
         long ans = 0;
-        for(int j = i ; j >= 0 && i-j < 15 ; j--){
+        for(int j = i ; j >= 0 && i-j < 10 ; j--){
             if(s[j] != '0'){
                 string t = s.substr(j,i-j+1);
                 if(stol(t) > k)
